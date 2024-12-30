@@ -35,8 +35,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   section: {
-    backgroundColor: "#2d2d36",
-    borderRadius: 35,
+    borderRadius: 40,
     padding: 15, // Inside padding
     paddingLeft: 20,
     marginHorizontal: 3,
@@ -45,7 +44,7 @@ const styles = StyleSheet.create({
   },
 
   welcomeUser: {
-    backgroundColor: "#13141b",
+    backgroundColor: "#1A1B20",
     paddingTop: 70,
     marginHorizontal: 0,
     borderTopLeftRadius: 0,

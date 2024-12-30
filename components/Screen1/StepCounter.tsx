@@ -4,7 +4,7 @@ import ContentBubble from "./ContentBubble";
 
 interface StepCounterProps {
   progress: Animated.Value; // Progress is an animated value (0 to 1)
-  percentage: number; // Percentage value (e.g., 0 to 100)
+  percentage: number; // Percentage value of how much percent steps are complete (e.g., 0 to 100)
 }
 
 const StepCounter: React.FC<StepCounterProps> = ({ progress, percentage }) => {
@@ -13,8 +13,10 @@ const StepCounter: React.FC<StepCounterProps> = ({ progress, percentage }) => {
       style={{
         flexDirection: "row",
         justifyContent: "space-between",
+        padding: 15,
+        paddingHorizontal: 20,
+        minHeight: 120,
       }}
-      minHeight={120}
     >
       {/* Step Counter as text */}
       <View style={styles.stepCounterText}>
@@ -38,12 +40,32 @@ const StepCounter: React.FC<StepCounterProps> = ({ progress, percentage }) => {
             {
               left: progress.interpolate({
                 inputRange: [0, 1],
-                outputRange: ["-8%", "92%"], // The text moves from 0% to 68%
+                outputRange: ["-10%", "88%"], // The text moves from 0% to 68%
               }),
             },
           ]}
         >
           {percentage}%
+        </Animated.Text>
+        <Animated.Text
+          style={[
+            {
+              color: "black",
+              fontWeight: "bold",
+              fontSize: 8,
+              position: "absolute",
+              top: 59,
+              zIndex: 1, // Ensures this text is on top of all other elements
+            },
+            {
+              left: progress.interpolate({
+                inputRange: [0, 1],
+                outputRange: ["-10%", "95%"], // The text moves from 0% to 68%
+              }),
+            },
+          ]}
+        >
+          |
         </Animated.Text>
         {/* Loading bar */}
         <View style={[styles.loadingBarContainer]}>
@@ -80,9 +102,9 @@ const styles = StyleSheet.create({
   },
 
   loadingBarContainer: {
-    height: 10,
+    height: 13,
     backgroundColor: "#4a4a4a",
-    borderRadius: 5,
+    borderRadius: 10,
     marginTop: 10,
     overflow: "hidden",
     position: "relative", // Needed for absolute positioning of the text
@@ -96,19 +118,9 @@ const styles = StyleSheet.create({
 
   percentageText: {
     position: "absolute",
-    top: 40,
-    fontWeight: "200",
-    fontSize: 13,
-  },
-
-  section: {
-    backgroundColor: "#2d2d36",
-    borderRadius: 35,
-    padding: 15, // Inside padding
-    paddingLeft: 20,
-    marginHorizontal: 3,
-    marginVertical: 2, // Up and down
-    minHeight: 120,
+    top: 38,
+    fontWeight: "300",
+    fontSize: 14,
   },
 
   text: {

@@ -5,7 +5,7 @@ import {
   StepCounter,
   DailyActivity,
   Workouts,
-} from "@/components/Screen1";
+} from "@/components/screen1";
 // Import React Native components
 import { StyleSheet, ScrollView, StatusBar, Animated } from "react-native";
 
@@ -37,11 +37,16 @@ export default function Index() {
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <StatusBar backgroundColor="#13141b" barStyle="light-content" />
       <WelcomeUser />
       <StepCounter progress={progress} percentage={percentage} />
-      <DailyActivity />
+      <DailyActivity
+        progress={progress}
+        stepNumber={percentage * 160}
+        calorieNumber={Math.floor((percentage / 100) * 680)}
+        waterNumber={parseFloat(((percentage / 90) * 2.5).toFixed(1))}
+      />
       <Workouts />
     </ScrollView>
   );
@@ -51,6 +56,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#090b17",
+    backgroundColor: "#0F121E",
   },
 });
